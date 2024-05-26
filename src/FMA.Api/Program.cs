@@ -1,4 +1,5 @@
 using FMA.Application.Data;
+using FMA.Application.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +12,8 @@ builder.Services.AddDbContext<FreelancerContext>(options =>
 {
     options.UseNpgsql(builder.Configuration["ConnectionString"]);
 });
-
+builder.Services.AddScoped<IFreelancerRepository, FreelancerRepository>();
+builder.Services.AddControllers();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -43,6 +45,7 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
+app.MapControllers();
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
