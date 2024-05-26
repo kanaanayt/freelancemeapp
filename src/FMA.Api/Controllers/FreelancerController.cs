@@ -9,8 +9,8 @@ namespace FMA.Api.Controllers
     // [Route("api/[controller]")]
     public class FreelancerController : ControllerBase
     {
-        private readonly IFreelancerRepository _repository;
-        public FreelancerController(IFreelancerRepository repository)
+        private readonly IFreelanceMeRepository _repository;
+        public FreelancerController(IFreelanceMeRepository repository)
         {
             _repository = repository;
         }

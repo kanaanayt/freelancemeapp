@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FMA.Application.Repositories;
 
-public class FreelancerRepository : IFreelancerRepository
+public class FreelanceMeRepository : IFreelanceMeRepository
 {
     private readonly FreelancerContext _db;
-    public FreelancerRepository(FreelancerContext context)
+    public FreelanceMeRepository(FreelancerContext context)
     {
         _db = context;
     }
