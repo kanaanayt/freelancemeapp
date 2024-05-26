@@ -309,7 +309,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 1,
-                            DateRegistered = new DateTime(2024, 3, 26, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 27, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "nadia@example.com",
                             FirstName = "Nadia",
@@ -327,7 +327,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 2,
-                            DateRegistered = new DateTime(2024, 2, 25, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 2, 26, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "khalid@example.com",
                             FirstName = "Khalid",
@@ -345,7 +345,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 3,
-                            DateRegistered = new DateTime(2024, 4, 10, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 4, 11, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "sara@example.com",
                             FirstName = "Sara",
@@ -363,7 +363,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 4,
-                            DateRegistered = new DateTime(2024, 3, 11, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 12, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "yousef@example.com",
                             FirstName = "Yousef",
@@ -381,7 +381,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 5,
-                            DateRegistered = new DateTime(2024, 2, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 2, 16, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "layla@example.com",
                             FirstName = "Layla",
@@ -399,7 +399,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 6,
-                            DateRegistered = new DateTime(2024, 3, 31, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 4, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "omar@example.com",
                             FirstName = "Omar",
@@ -417,7 +417,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 7,
-                            DateRegistered = new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "huda@example.com",
                             FirstName = "Huda",
@@ -435,7 +435,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 8,
-                            DateRegistered = new DateTime(2024, 3, 16, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 17, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "fahad@example.com",
                             FirstName = "Fahad",
@@ -453,7 +453,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 9,
-                            DateRegistered = new DateTime(2024, 2, 5, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 2, 6, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "amal@example.com",
                             FirstName = "Amal",
@@ -471,7 +471,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 10,
-                            DateRegistered = new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 2, 21, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "abdullah@example.com",
                             FirstName = "Abdullah",
@@ -489,7 +489,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 11,
-                            DateRegistered = new DateTime(2024, 3, 6, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "noura@example.com",
                             FirstName = "Noura",
