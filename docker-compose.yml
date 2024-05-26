@@ -5,8 +5,8 @@ services:
     image: postgres:latest
     restart: always
     environment:
-      - POSTGRES_USER=fmadmin
-      - POSTGRES_PASSWORD=fmpassword
-      - POSTGRES_DB=fmdb
+      - POSTGRES_USER=kanaan
+      - POSTGRES_PASSWORD=orjrmrorjrm
+      - POSTGRES_DB=fmadb
     ports:
       - '5432:5432'
