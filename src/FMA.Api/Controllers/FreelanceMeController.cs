@@ -3,6 +3,7 @@ using FMA.Application.Entities;
 using FMA.Application.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using FMA.Contracts.Responses;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace FMA.Api.Controllers
 {

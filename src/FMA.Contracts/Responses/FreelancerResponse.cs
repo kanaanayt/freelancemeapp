@@ -6,9 +6,10 @@ public class FreelancerResponse
 
     public required int DomainId { get; set; }
 
-    public IEnumerable<ExpertiseResponse> Expertises { get; set; } = Enumerable.Empty<ExpertiseResponse>();
+    // public IEnumerable<ExpertiseResponse> Expertises { get; set; } = Enumerable.Empty<ExpertiseResponse>();
+    public List<string> ExpertiseNames { get; set; } = new();
 
-    public int NumberOfSkills => Expertises.Count();
+    public int NumberOfSkills => ExpertiseNames.Count();
 
     public required int HoursBilled { get; set; }
 

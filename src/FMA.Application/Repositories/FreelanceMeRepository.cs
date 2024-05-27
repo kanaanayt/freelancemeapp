@@ -25,7 +25,10 @@ public class FreelanceMeRepository : IFreelanceMeRepository
 
     public async Task<IEnumerable<Freelancer>> GetFreelancersAsync(int domainId)
     {
-        return await _db.Freelancers.Where(f => f.DomainId == domainId).ToListAsync();
+        return await _db.Freelancers
+            .Include(f => f.Expertises)
+            .Where(f => f.DomainId == domainId)
+            .ToListAsync();
     }
 
     public async Task<Freelancer> GetFreelancerByIdAsync(

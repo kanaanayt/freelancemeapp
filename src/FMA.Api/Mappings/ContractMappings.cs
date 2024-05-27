@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using System.Reflection.Emit;
 using FMA.Application.Entities;
 using FMA.Contracts.Responses;
@@ -35,7 +36,7 @@ public static class ContractMappings
 
     public static FreelancerResponse MapFreelancer(this Freelancer freelancer)
     {
-        var fr = new FreelancerResponse
+        var free = new FreelancerResponse
         {
             Id = freelancer.Id,
             DomainId = freelancer.DomainId,
@@ -52,12 +53,16 @@ public static class ContractMappings
             Latitude = freelancer.Latitude,
             Longitude = freelancer.Longitude,
             IsActive = freelancer.IsActive,
-            Expertises = new()
         };
         foreach (var e in freelancer.Expertises)
         {
-            fr.Expertises.Add(e);
+            free.ExpertiseNames.Add(e.ExpertiseName);
         }
-        return fr;
+        return free;
     }
+
+    // public static ExpertiseResponse MapExpertise(this Expertise expertise)
+    // {
+    //     return new 
+    // }
 }

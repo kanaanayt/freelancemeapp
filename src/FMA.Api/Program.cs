@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using FMA.Application.Data;
 using FMA.Application.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +14,9 @@ builder.Services.AddDbContext<FreelancerContext>(options =>
     options.UseNpgsql(builder.Configuration["ConnectionString"]);
 });
 builder.Services.AddScoped<IFreelanceMeRepository, FreelanceMeRepository>();
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

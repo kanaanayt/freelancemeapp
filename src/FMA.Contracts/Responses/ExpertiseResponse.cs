@@ -6,7 +6,8 @@ public class ExpertiseResponse
 
     public required string Name { get; set; }
 
-    public required IEnumerable<FreelancerResponse> Freelancers { get; set; } = Enumerable.Empty<FreelancerResponse>();
+    public required FreelancersResponse Freelancers { get; set; }
 
-    public int ExpertiseCount => Freelancers.Count();
+    public int ExpertiseCount => Freelancers.Freelancers. Count();
 }
+ 
