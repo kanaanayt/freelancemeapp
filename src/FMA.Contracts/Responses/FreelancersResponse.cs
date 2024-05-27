@@ -1,6 +1,6 @@
-namespace fm.Contracts.Responses;
+namespace FMA.Contracts.Responses;
 
-public record FreelancersReponse
+public class FreelancersResponse
 {
-    public IEnumerable<FreelancerResponse> Items { get; set; } = Enumerable.Empty<FreelancerResponse>();
+    public IEnumerable<FreelancerResponse> Freelancers { get; set; } = Enumerable.Empty<FreelancerResponse>();
 };

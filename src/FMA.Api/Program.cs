@@ -12,7 +12,7 @@ builder.Services.AddDbContext<FreelancerContext>(options =>
 {
     options.UseNpgsql(builder.Configuration["ConnectionString"]);
 });
-builder.Services.AddScoped<IFreelancerRepository, FreelancerRepository>();
+builder.Services.AddScoped<IFreelanceMeRepository, FreelanceMeRepository>();
 builder.Services.AddControllers();
 var app = builder.Build();
 

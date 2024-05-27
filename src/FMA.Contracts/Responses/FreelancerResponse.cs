@@ -1,12 +1,12 @@
-﻿namespace fm.Contracts.Responses;
+﻿namespace FMA.Contracts.Responses;
 
-public record FreelancerResponse 
+public class FreelancerResponse 
 {
-    public required Guid Id { get; set; }
+    public required int Id { get; set; }
 
-    public required Guid DomainId { get; set; }
+    public required int DomainId { get; set; }
 
-    public required IEnumerable<ExpertiseResponse> Expertises { get; set; } = Enumerable.Empty<ExpertiseResponse>();
+    public IEnumerable<ExpertiseResponse> Expertises { get; set; } = Enumerable.Empty<ExpertiseResponse>();
 
     public int NumberOfSkills => Expertises.Count();
 

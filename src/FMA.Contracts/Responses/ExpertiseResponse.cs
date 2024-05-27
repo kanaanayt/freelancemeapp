@@ -1,4 +1,4 @@
-namespace fm.Contracts.Responses;
+namespace FMA.Contracts.Responses;
 
 public class ExpertiseResponse 
 {

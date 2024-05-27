@@ -4,6 +4,8 @@ namespace FMA.Application.Repositories;
 
 public interface IFreelanceMeRepository
 {
-    public Task<IEnumerable<Domain>> GetDomainsAsync();
-    public Task<Domain> GetDomainAsync(int domainId);
+    Task<IEnumerable<Domain>> GetDomainsAsync();
+    Task<Domain> GetDomainAsync(int domainId);
+    Task<IEnumerable<Freelancer>> GetFreelancersAsync(int domainId);
+    Task<Freelancer> GetFreelancerByIdAsync(int domainId, int freelancerId);
 }

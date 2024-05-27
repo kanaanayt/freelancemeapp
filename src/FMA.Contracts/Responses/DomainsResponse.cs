@@ -1,4 +1,4 @@
-using fm.Contracts.Responses;
+namespace FMA.Contracts.Responses;
 
 public class DomainsResponse
 {

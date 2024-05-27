@@ -22,5 +22,17 @@ public class FreelanceMeRepository : IFreelanceMeRepository
     {
         return await _db.Domains.SingleOrDefaultAsync(d => d.Id == domainId);
     }
-    
+
+    public async Task<IEnumerable<Freelancer>> GetFreelancersAsync(int domainId)
+    {
+        return await _db.Freelancers.Where(f => f.DomainId == domainId).ToListAsync();
+    }
+
+    public async Task<Freelancer> GetFreelancerByIdAsync(
+        int domainId, int freelancerId)
+    {
+        return await _db.Freelancers
+            .Include(f => f.Expertises)
+            .SingleOrDefaultAsync(f => f.DomainId == domainId && f.Id == freelancerId);
+    }
 }
