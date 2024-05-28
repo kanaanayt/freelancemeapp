@@ -41,10 +41,10 @@ public class FreelanceMeRepository : IFreelanceMeRepository
 
     public async Task<IEnumerable<Freelancer>> GetAllFreelancersAsync()
     {
-        return await _db.Freelancers.ToListAsync();
+        return await _db.Freelancers.Include(f => f.Expertises).ToListAsync();
     }
 
-    public async Task<IEnumerable<Expertise>> GetSomeExpertises(int below, int above)
+    public async Task<IEnumerable<Expertise>> GetSomeExpertisesAsync(int below, int above)
     {
         return await _db.Expertises
             .Include(e => e.Freelancers)

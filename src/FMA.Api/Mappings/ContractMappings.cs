@@ -11,7 +11,7 @@ public static class ContractMappings
     {
         return new DomainsResponse
         {
-            Domains = domains.Select(MapDomain)
+            Items = domains.Select(MapDomain)
         };
     }
 
@@ -36,7 +36,7 @@ public static class ContractMappings
 
     public static FreelancerResponse MapFreelancer(this Freelancer freelancer)
     {
-        var free = new FreelancerResponse
+        var response = new FreelancerResponse
         {
             Id = freelancer.Id,
             DomainId = freelancer.DomainId,
@@ -56,13 +56,28 @@ public static class ContractMappings
         };
         foreach (var e in freelancer.Expertises)
         {
-            free.ExpertiseNames.Add(e.ExpertiseName);
+            response.ExpertiseNames.Add(e.ExpertiseName);
         }
-        return free;
+        return response;
     }
 
     public static ExpertiseResponse MapExpertise(this Expertise expertise)
     {
-        return new 
+        return new ExpertiseResponse
+        {
+            Id = expertise.Id,
+            ExpertiseName = expertise.ExpertiseName,
+            Freelancers = expertise.Freelancers.MapFreelancers()
+        };
+    }
+
+    public static ExpertisesResponse MapExpertises(this IEnumerable<Expertise> expertises)
+    {
+
+        return new ExpertisesResponse
+        {
+            Items = expertises.Select(MapExpertise)
+        };
+
     }
 }

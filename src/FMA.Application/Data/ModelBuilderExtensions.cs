@@ -275,7 +275,12 @@ public static class ModelBuilderExtensions
                     {
                         j.HasData(
                             new { FreelancerId = 1, ExpertiseId = 1 },
-                            new { FreelancerId = 1, ExpertiseId = 2 }
+                            new { FreelancerId = 1, ExpertiseId = 2 },
+                            new { FreelancerId = 2, ExpertiseId = 2 },
+                            new { FreelancerId = 3, ExpertiseId = 2 },
+                            new { FreelancerId = 3, ExpertiseId = 1 },
+                            new { FreelancerId = 4, ExpertiseId = 3 },
+                            new { FreelancerId = 4, ExpertiseId = 4 }
                         );
                     });
         });
