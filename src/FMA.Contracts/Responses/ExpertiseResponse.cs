@@ -8,6 +8,6 @@ public class ExpertiseResponse
 
     public required FreelancersResponse Freelancers { get; set; }
 
-    public int ExpertiseCount => Freelancers.Freelancers. Count();
+    public int ExpertiseCount => Freelancers.Items. Count();
 }
  

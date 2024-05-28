@@ -38,4 +38,17 @@ public class FreelanceMeRepository : IFreelanceMeRepository
             .Include(f => f.Expertises)
             .SingleOrDefaultAsync(f => f.DomainId == domainId && f.Id == freelancerId);
     }
+
+    public async Task<IEnumerable<Freelancer>> GetAllFreelancersAsync()
+    {
+        return await _db.Freelancers.ToListAsync();
+    }
+
+    public async Task<IEnumerable<Expertise>> GetSomeExpertises(int below, int above)
+    {
+        return await _db.Expertises
+            .Include(e => e.Freelancers)
+            .Where(e => e.Id >= below && e.Id <= above)
+            .ToListAsync();
+    }
 }

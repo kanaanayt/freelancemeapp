@@ -48,5 +48,20 @@ namespace FMA.Api.Controllers
             var freelancer = await _repository.GetFreelancerByIdAsync(domainId, freelancerId);
             return freelancer.MapFreelancer();
         }
+
+        [Route("api/freelancers")]
+        [HttpGet]
+        public Task<ActionResult<FreelancersResponse>> GetAllFreelancers()
+        {
+            var freelancers = _repository.GetAllFreelancersAsync();
+            return freelancers.MapFreelancers();
+        }
+
+        [Route("api/expertises/{below}/{above}")]
+        [HttpGet]
+        public Task<ActionResult<ExpertisesResponse>> GetSomeExpertises(int below, int above)
+        {
+            
+        }
     }
 }

@@ -30,7 +30,7 @@ public static class ContractMappings
     {
         return new FreelancersResponse
         {
-            Freelancers = freelancers.Select(MapFreelancer)
+            Items = freelancers.Select(MapFreelancer)
         };
     }
 
@@ -61,8 +61,8 @@ public static class ContractMappings
         return free;
     }
 
-    // public static ExpertiseResponse MapExpertise(this Expertise expertise)
-    // {
-    //     return new 
-    // }
+    public static ExpertiseResponse MapExpertise(this Expertise expertise)
+    {
+        return new 
+    }
 }
