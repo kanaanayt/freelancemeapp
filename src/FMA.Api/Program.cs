@@ -17,6 +17,14 @@ builder.Services.AddScoped<IFreelanceMeRepository, FreelanceMeRepository>();
 builder.Services.AddControllers().AddJsonOptions(options =>
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
+builder.Services.AddCors(options =>
+    options.AddPolicy("corsPolicy", builder =>
+    {
+        builder.AllowAnyHeader()
+               .AllowAnyMethod()
+               .AllowAnyOrigin();
+    }));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

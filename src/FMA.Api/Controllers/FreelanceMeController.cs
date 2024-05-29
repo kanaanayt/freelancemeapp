@@ -68,7 +68,7 @@ public class FreelanceMeController : ControllerBase
     public async Task<ActionResult<ExpertisesResponse>> GetSomeExpertises(
         int domainId, int below, int above)
     {
-        var expertises = await _repository.GetSomeExpertisesAsync(below, above);
+        var expertises = await _repository.GetSomeExpertisesAsync(domainId, below, above);
         return expertises.MapExpertises();
     }
 }
