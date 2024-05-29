@@ -18,6 +18,7 @@ public class FreelanceMeController : ControllerBase
 
     [Route("domains")]
     [HttpGet]
+    // Landing page
     public async Task<ActionResult<DomainsResponse>> GetDomains()
     {
         var entities = await _repository.GetDomainsAsync();
@@ -26,12 +27,14 @@ public class FreelanceMeController : ControllerBase
 
     [Route("domains/{id}")]
     [HttpGet]
+    // Title of domain page. Its font, perhaps the photo. And number of frelancers
     public async Task<ActionResult<DomainResponse>> GetDomain(int id)
     {
         var entity = await _repository.GetDomainAsync(id);
         return entity.MapDomain();
     }
 
+    // Get Freelancers under specific domain. All of them. Before expertise filtering
     [Route("domains/{id}/freelancers")]
     [HttpGet]
     public async Task<ActionResult<FreelancersResponse>> GetFreelancers(int id)
@@ -40,6 +43,7 @@ public class FreelanceMeController : ControllerBase
         return freelancers.MapFreelancers();
     }
 
+    // View freelancer page, contact me button
     [Route("domains/{domainId}/freelancers/{freelancerId}")]
     [HttpGet]
     public async Task<ActionResult<FreelancerResponse>> GetFreelancerById(
@@ -49,6 +53,7 @@ public class FreelanceMeController : ControllerBase
         return freelancer.MapFreelancer();
     }
 
+    // Filter by name, expertise page
     [Route("freelancers")]
     [HttpGet]
     public async Task<ActionResult<FreelancersResponse>> GetAllFreelancers()
@@ -57,9 +62,11 @@ public class FreelanceMeController : ControllerBase
         return freelancers.MapFreelancers();
     }
 
-    [Route("expertises/{below}/{above}")]
+    // Expertise mini filtering under single domain
+    [Route("domain/{domainId}/expertises/{below}/{above}")]
     [HttpGet]
-    public async Task<ActionResult<ExpertisesResponse>> GetSomeExpertises(int below, int above)
+    public async Task<ActionResult<ExpertisesResponse>> GetSomeExpertises(
+        int domainId, int below, int above)
     {
         var expertises = await _repository.GetSomeExpertisesAsync(below, above);
         return expertises.MapExpertises();

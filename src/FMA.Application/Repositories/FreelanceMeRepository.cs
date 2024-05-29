@@ -1,4 +1,5 @@
 using System.Reflection.Emit;
+using System.Security.Principal;
 using FMA.Application.Data;
 using FMA.Application.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +21,9 @@ public class FreelanceMeRepository : IFreelanceMeRepository
 
     public async Task<Domain> GetDomainAsync(int domainId)
     {
-        return await _db.Domains.SingleOrDefaultAsync(d => d.Id == domainId);
+        return await _db.Domains
+            .Include(d => d.Freelancers)
+            .SingleOrDefaultAsync(d => d.Id == domainId);
     }
 
     public async Task<IEnumerable<Freelancer>> GetFreelancersAsync(int domainId)
@@ -44,11 +47,11 @@ public class FreelanceMeRepository : IFreelanceMeRepository
         return await _db.Freelancers.Include(f => f.Expertises).ToListAsync();
     }
 
-    public async Task<IEnumerable<Expertise>> GetSomeExpertisesAsync(int below, int above)
+    public async Task<IEnumerable<Expertise>> GetSomeExpertisesAsync(int domainId, int below, int above)
     {
         return await _db.Expertises
             .Include(e => e.Freelancers)
-            .Where(e => e.Id >= below && e.Id <= above)
+            .Where(e => e.Id >= below && e.Id <= above && e.DomainId == domainId)
             .ToListAsync();
     }
 }
