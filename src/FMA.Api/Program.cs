@@ -11,7 +11,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<FreelancerContext>(options => 
 {
-    options.UseNpgsql(builder.Configuration["ConnectionString"]);
+    // options.UseNpgsql(builder.Configuration["ConnectionString"]);
+    options.UseSqlServer(builder.Configuration["ConnectionString"]);
 });
 builder.Services.AddScoped<IFreelanceMeRepository, FreelanceMeRepository>();
 builder.Services.AddControllers().AddJsonOptions(options =>
@@ -55,6 +56,11 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast")
 .WithOpenApi();
+app.UseCors(builder => 
+    builder.AllowAnyHeader()
+           .AllowAnyMethod()
+           .AllowAnyOrigin()
+           .SetIsOriginAllowed(_ => true));
 
 app.MapControllers();
 app.Run();
