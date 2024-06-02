@@ -39,7 +39,7 @@ public class FreelanceMeController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<FreelancersResponse>> GetFreelancers(int id)
     {
-        var freelancers = await _repository.GetFreelancersAsync(id);
+        var freelancers = (await _repository.GetFreelancersAsync(id)).ToList();
         return freelancers.MapFreelancers();
     }
 
@@ -58,7 +58,7 @@ public class FreelanceMeController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<FreelancersResponse>> GetAllFreelancers()
     {
-        var freelancers = await _repository.GetAllFreelancersAsync();
+        var freelancers = (await _repository.GetAllFreelancersAsync()).ToList();
         return freelancers.MapFreelancers();
     }
 

@@ -9,7 +9,9 @@ public class DomainResponse
     public required string PhotoPath { get; set; }
     public required string FontFamily { get; set; }
 
-    public IEnumerable<FreelancerResponse> Freelancers { get; set; } = Enumerable.Empty<FreelancerResponse>();
+    public FreelancersResponse Freelancers { get; set; } = new();
+    public int FreelancerCount => Freelancers.Items.Count();
 
-    public int FreelancerCount => Freelancers.Count();
+    public ExpertisesResponse Expertises { get; set; } = new();
+    public int ExpertiseCount => Expertises.Items.Count();
 };

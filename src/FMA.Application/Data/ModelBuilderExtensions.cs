@@ -9,13 +9,13 @@ public static class ModelBuilderExtensions
     public static void SeedDomains(this ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Domain>().HasData(
-            new Domain { Id = 1, DomainName = "Manual Labor", PhotoPath = "/images/manuallabor", FontFamily = "Times New Roman" },
-            new Domain { Id = 2, DomainName = "Home Care", PhotoPath = "/images/homecare", FontFamily = "Helvetica" },
-            new Domain { Id = 3, DomainName = "Health ", PhotoPath = "/images/health", FontFamily = "Courier New" },
-            new Domain { Id = 4, DomainName = "White Collar Labor", PhotoPath = "/images/whitecollar", FontFamily = "Verdana" },
-            new Domain { Id = 5, DomainName = "Home Repair", PhotoPath = "/images/homerepair", FontFamily = "Arial" },
+            new Domain { Id = 1, DomainName = "Manual Labor", PhotoPath = "/images/manual", FontFamily = "Times New Roman" },
+            new Domain { Id = 2, DomainName = "Domestic Services", PhotoPath = "/images/domestic", FontFamily = "Helvetica" },
+            new Domain { Id = 3, DomainName = "Health & Welness ", PhotoPath = "/images/health", FontFamily = "Courier New" },
+            new Domain { Id = 4, DomainName = "Business Services", PhotoPath = "/images/business", FontFamily = "Verdana" },
+            new Domain { Id = 5, DomainName = "Home Technology", PhotoPath = "/images/hometech", FontFamily = "Arial" },
             new Domain { Id = 6, DomainName = "Pet Care", PhotoPath = "/images/petcare", FontFamily = "Century Gothic" },
-            new Domain { Id = 7, DomainName = "Creative", PhotoPath = "/images/creative", FontFamily = "Cambria" }
+            new Domain { Id = 7, DomainName = "Performing Arts", PhotoPath = "/images/arts", FontFamily = "Cambria" }
         );
     }
 

@@ -16,7 +16,10 @@ public class FreelanceMeRepository : IFreelanceMeRepository
 
     public async Task<IEnumerable<Domain>> GetDomainsAsync()
     {
-        return await _db.Domains.ToListAsync();
+        return await _db.Domains
+                        .Include(d => d.Freelancers)
+                        .Include(d =>  d.Expertises)
+                        .ToListAsync();
     }
 
     public async Task<Domain> GetDomainAsync(int domainId)

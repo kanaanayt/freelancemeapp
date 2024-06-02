@@ -18,5 +18,5 @@ public class Expertise
 
     public required string ExpertiseName { get; set; }
 
-    public ICollection<Freelancer> Freelancers { get; set; } = new Collection<Freelancer>();
+    public List<Freelancer> Freelancers { get; set; } = new();
 }

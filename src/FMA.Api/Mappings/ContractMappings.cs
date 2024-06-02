@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Security.Cryptography;
 using System.Reflection.Emit;
 using FMA.Application.Entities;
@@ -11,26 +12,35 @@ public static class ContractMappings
     {
         return new DomainsResponse
         {
-            Items = domains.Select(MapDomain)
+            Items = domains.Select(MapDomain).ToList()
         };
     }
 
     public static DomainResponse MapDomain(this Domain domain)
     {
-        return new DomainResponse
+        var response = new DomainResponse
         {
             Id = domain.Id,
             DomainName = domain.DomainName,
             PhotoPath = domain.PhotoPath,
             FontFamily = domain.FontFamily
         };
+        foreach (var freelancer in domain.Freelancers)
+        {
+            response.Freelancers.Items.Add(freelancer.MapFreelancer());
+        }
+        foreach (var expertise in domain.Expertises)
+        {
+            response.Expertises.Items.Add(expertise.MapExpertise());
+        }
+        return response;
     }
 
-    public static FreelancersResponse MapFreelancers(this IEnumerable<Freelancer> freelancers)
+    public static FreelancersResponse MapFreelancers(this List<Freelancer> freelancers)
     {
         return new FreelancersResponse
         {
-            Items = freelancers.Select(MapFreelancer)
+            Items = freelancers.Select(MapFreelancer).ToList()
         };
     }
 
@@ -39,6 +49,7 @@ public static class ContractMappings
         var response = new FreelancerResponse
         {
             Id = freelancer.Id,
+            
             DomainId = freelancer.DomainId,
             FirstName = freelancer.FirstName,
             LastName = freelancer.LastName,
@@ -73,11 +84,9 @@ public static class ContractMappings
 
     public static ExpertisesResponse MapExpertises(this IEnumerable<Expertise> expertises)
     {
-
         return new ExpertisesResponse
         {
-            Items = expertises.Select(MapExpertise)
+            Items = expertises.Select(MapExpertise).ToList()
         };
-
     }
 }
