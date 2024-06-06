@@ -71,4 +71,22 @@ public class FreelanceMeController : ControllerBase
         var expertises = await _repository.GetSomeExpertisesAsync(domainId, below, above);
         return expertises.MapExpertises();
     }
+
+    [Route("images/expertise/{id}")]
+    [HttpGet]
+    public async Task<IActionResult> GetExpertisePhoto(int id)
+    {
+        var expertise = await _repository.GetExpertiseAsync(id);
+        Byte[] bytes = System.IO.File.ReadAllBytes(expertise.PhotoPath);
+        return File(bytes, "image/jpeg");
+    }
+
+    [Route("images/domain/{id}")]
+    [HttpGet]
+    public async Task<IActionResult> GetDomainPhoto(int id)
+    {
+        var domain = await _repository.GetDomainAsync(id);
+        Byte[] bytes = System.IO.File.ReadAllBytes(domain.PhotoPath);
+        return File(bytes, "image/jpeg");
+    }
 }

@@ -6,9 +6,10 @@ public class FreelancerResponse
 
     public required int DomainId { get; set; }
 
-    public List<string> ExpertiseNames { get; set; } = new();
+    public string MainExpertise { get; set; }
+    public List<string> OtherExpertises { get; set; } = new();
 
-    public int NumberOfSkills => ExpertiseNames.Count();
+    public int NumberOfSkills => OtherExpertises.Count();
 
     public required int HoursBilled { get; set; }
 

@@ -15,6 +15,8 @@ public class Freelancer
     //public ICollection<FreelancerExpertise> FreelancerExpertise { get; set; } = new Collection<FreelancerExpertise>();
     public ICollection<Expertise> Expertises { get; set; } = new Collection<Expertise>();
     [NotMapped] public Expertise? Expertise { get; set; }
+    
+    public int MainExpertiseId { get; set; }
     public required string FirstName { get; set; }
     public required string LastName { get; set; }
 

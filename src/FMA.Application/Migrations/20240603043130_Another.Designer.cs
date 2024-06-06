@@ -3,6 +3,7 @@ using System;
 using FMA.Application.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FMA.Application.Migrations
 {
     [DbContext(typeof(FreelancerContext))]
-    partial class FreelancerContextModelSnapshot : ModelSnapshot
+    [Migration("20240603043130_Another")]
+    partial class Another
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -180,10 +183,6 @@ namespace FMA.Application.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("PhotoPath")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.HasKey("Id");
 
                     b.HasIndex("DomainId");
@@ -195,106 +194,91 @@ namespace FMA.Application.Migrations
                         {
                             Id = 1,
                             DomainId = 1,
-                            ExpertiseName = "Furniture assembler",
-                            PhotoPath = "/"
+                            ExpertiseName = "Furniture assembler"
                         },
                         new
                         {
                             Id = 2,
                             DomainId = 1,
-                            ExpertiseName = "Chauffeur",
-                            PhotoPath = "/"
+                            ExpertiseName = "Chauffeur"
                         },
                         new
                         {
                             Id = 3,
                             DomainId = 1,
-                            ExpertiseName = "Painter",
-                            PhotoPath = "/"
+                            ExpertiseName = "Painter"
                         },
                         new
                         {
                             Id = 4,
                             DomainId = 1,
-                            ExpertiseName = "Carpenter",
-                            PhotoPath = "/"
+                            ExpertiseName = "Carpenter"
                         },
                         new
                         {
                             Id = 5,
                             DomainId = 1,
-                            ExpertiseName = "Roof repairer",
-                            PhotoPath = "/"
+                            ExpertiseName = "Roof repairer"
                         },
                         new
                         {
                             Id = 6,
                             DomainId = 2,
-                            ExpertiseName = "Housekeeper",
-                            PhotoPath = "/"
+                            ExpertiseName = "Housekeeper"
                         },
                         new
                         {
                             Id = 7,
                             DomainId = 2,
-                            ExpertiseName = "Housesitter",
-                            PhotoPath = "/"
+                            ExpertiseName = "Housesitter"
                         },
                         new
                         {
                             Id = 8,
                             DomainId = 2,
-                            ExpertiseName = "Babysitter",
-                            PhotoPath = "/"
+                            ExpertiseName = "Babysitter"
                         },
                         new
                         {
                             Id = 9,
                             DomainId = 2,
-                            ExpertiseName = "Nanny",
-                            PhotoPath = "/"
+                            ExpertiseName = "Nanny"
                         },
                         new
                         {
                             Id = 10,
                             DomainId = 2,
-                            ExpertiseName = "Caregiver",
-                            PhotoPath = "/"
+                            ExpertiseName = "Caregiver"
                         },
                         new
                         {
                             Id = 11,
                             DomainId = 2,
-                            ExpertiseName = "Cook",
-                            PhotoPath = "/"
+                            ExpertiseName = "Cook"
                         },
                         new
                         {
                             Id = 12,
                             DomainId = 2,
-                            ExpertiseName = "Kitchen cleaner",
-                            PhotoPath = "/"
+                            ExpertiseName = "Kitchen cleaner"
                         },
                         new
                         {
                             Id = 13,
                             DomainId = 2,
-                            ExpertiseName = "Gardener",
-                            PhotoPath = "/"
+                            ExpertiseName = "Gardener"
                         },
                         new
                         {
                             Id = 14,
                             DomainId = 2,
-                            ExpertiseName = "Grocery shopper",
-                            PhotoPath = "/"
+                            ExpertiseName = "Grocery shopper"
                         },
                         new
                         {
                             Id = 31,
                             DomainId = 3,
-                            ExpertiseName = "Dance teacher",
-                            PhotoPath = "/"
+                            ExpertiseName = "Dance teacher"
                         });
                 });
 
@@ -342,9 +326,6 @@ namespace FMA.Application.Migrations
                     b.Property<decimal>("Longitude")
                         .HasColumnType("numeric");
 
-                    b.Property<int>("MainExpertiseId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("text");
@@ -366,7 +347,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 1,
-                            DateRegistered = new DateTime(2024, 4, 6, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 4, 4, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "nadia@example.com",
                             FirstName = "Nadia",
@@ -377,7 +358,6 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Saud",
                             Latitude = 26.4207m,
                             Longitude = 50.0888m,
-                            MainExpertiseId = 3,
                             PhoneNumber = "+966504567890",
                             PhotoPath = "/images/nadia.jpg",
                             Rating = 4.7m
@@ -385,7 +365,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 2,
-                            DateRegistered = new DateTime(2024, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 5, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "khalid@example.com",
                             FirstName = "Khalid",
@@ -396,7 +376,6 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Farsi",
                             Latitude = 23.8859m,
                             Longitude = 45.0792m,
-                            MainExpertiseId = 2,
                             PhoneNumber = "+966509876543",
                             PhotoPath = "/images/khalid.jpg",
                             Rating = 4.6m
@@ -404,7 +383,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 3,
-                            DateRegistered = new DateTime(2024, 4, 21, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 4, 19, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "sara@example.com",
                             FirstName = "Sara",
@@ -415,7 +394,6 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Qahtani",
                             Latitude = 24.7743m,
                             Longitude = 46.7384m,
-                            MainExpertiseId = 2,
                             PhoneNumber = "+966501234567",
                             PhotoPath = "/images/sara.jpg",
                             Rating = 4.9m
@@ -423,7 +401,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 4,
-                            DateRegistered = new DateTime(2024, 3, 22, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 20, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "yousef@example.com",
                             FirstName = "Yousef",
@@ -434,7 +412,6 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Ghamdi",
                             Latitude = 21.4858m,
                             Longitude = 39.1925m,
-                            MainExpertiseId = 4,
                             PhoneNumber = "+966504321098",
                             PhotoPath = "/images/yousef.jpg",
                             Rating = 4.5m
@@ -442,7 +419,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 5,
-                            DateRegistered = new DateTime(2024, 2, 26, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 2, 24, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "layla@example.com",
                             FirstName = "Layla",
@@ -453,7 +430,6 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Omari",
                             Latitude = 26.4207m,
                             Longitude = 50.0888m,
-                            MainExpertiseId = 1,
                             PhoneNumber = "+966509876543",
                             PhotoPath = "/images/layla.jpg",
                             Rating = 4.8m
@@ -461,7 +437,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 6,
-                            DateRegistered = new DateTime(2024, 4, 11, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 4, 9, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "omar@example.com",
                             FirstName = "Omar",
@@ -472,7 +448,6 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Zahrani",
                             Latitude = 23.8859m,
                             Longitude = 45.0792m,
-                            MainExpertiseId = 3,
                             PhoneNumber = "+966501234567",
                             PhotoPath = "/images/omar.jpg",
                             Rating = 4.7m
@@ -480,7 +455,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 7,
-                            DateRegistered = new DateTime(2024, 3, 12, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 10, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "huda@example.com",
                             FirstName = "Huda",
@@ -491,7 +466,6 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Muhanna",
                             Latitude = 24.7743m,
                             Longitude = 46.7384m,
-                            MainExpertiseId = 3,
                             PhoneNumber = "+966504567890",
                             PhotoPath = "/images/huda.jpg",
                             Rating = 4.6m
@@ -499,7 +473,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 8,
-                            DateRegistered = new DateTime(2024, 3, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 25, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "fahad@example.com",
                             FirstName = "Fahad",
@@ -510,7 +484,6 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Rashidi",
                             Latitude = 24.7136m,
                             Longitude = 46.6753m,
-                            MainExpertiseId = 3,
                             PhoneNumber = "+966501234567",
                             PhotoPath = "/images/fahad.jpg",
                             Rating = 4.9m
@@ -518,7 +491,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 9,
-                            DateRegistered = new DateTime(2024, 2, 16, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 2, 14, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "amal@example.com",
                             FirstName = "Amal",
@@ -529,7 +502,6 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Mutairi",
                             Latitude = 21.4858m,
                             Longitude = 39.1925m,
-                            MainExpertiseId = 3,
                             PhoneNumber = "+966501111222",
                             PhotoPath = "/images/amal.jpg",
                             Rating = 4.8m
@@ -537,7 +509,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 10,
-                            DateRegistered = new DateTime(2024, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 2, 29, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "abdullah@example.com",
                             FirstName = "Abdullah",
@@ -548,7 +520,6 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Qassem",
                             Latitude = 26.4207m,
                             Longitude = 50.0888m,
-                            MainExpertiseId = 3,
                             PhoneNumber = "+966509876543",
                             PhotoPath = "/images/abdullah.jpg",
                             Rating = 4.7m
@@ -556,7 +527,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 11,
-                            DateRegistered = new DateTime(2024, 3, 17, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 15, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "noura@example.com",
                             FirstName = "Noura",
@@ -567,7 +538,6 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Sulaiman",
                             Latitude = 23.8859m,
                             Longitude = 45.0792m,
-                            MainExpertiseId = 3,
                             PhoneNumber = "+966504321098",
                             PhotoPath = "/images/noura.jpg",
                             Rating = 4.9m

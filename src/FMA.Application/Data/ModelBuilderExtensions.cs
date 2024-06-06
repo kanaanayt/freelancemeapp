@@ -22,21 +22,21 @@ public static class ModelBuilderExtensions
     public static void SeedExpertises(this ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Expertise>().HasData(
-            new Expertise {Id = 1, ExpertiseName = "Furniture assembler", DomainId = 1 },
-            new Expertise {Id = 2, ExpertiseName = "Chauffeur", DomainId = 1 },
-            new Expertise {Id = 3, ExpertiseName = "Painter", DomainId = 1 },
-            new Expertise {Id = 4, ExpertiseName = "Carpenter", DomainId = 1 },
-            new Expertise {Id = 5, ExpertiseName = "Roof repairer", DomainId = 1 },
+            new Expertise {PhotoPath="/", Id = 1, ExpertiseName = "Furniture assembler", DomainId = 1 },
+            new Expertise {PhotoPath="/", Id = 2, ExpertiseName = "Chauffeur", DomainId = 1 },
+            new Expertise {PhotoPath="/", Id = 3, ExpertiseName = "Painter", DomainId = 1 },
+            new Expertise {PhotoPath="/", Id = 4, ExpertiseName = "Carpenter", DomainId = 1 },
+            new Expertise {PhotoPath="/", Id = 5, ExpertiseName = "Roof repairer", DomainId = 1 },
 
-            new Expertise {Id = 6, ExpertiseName = "Housekeeper", DomainId = 2 },
-            new Expertise {Id = 7, ExpertiseName = "Housesitter", DomainId = 2 },
-            new Expertise {Id = 8, ExpertiseName = "Babysitter", DomainId = 2 },
-            new Expertise {Id = 9, ExpertiseName = "Nanny", DomainId = 2 },
-            new Expertise {Id = 10, ExpertiseName = "Caregiver", DomainId = 2 },
-            new Expertise {Id = 11, ExpertiseName = "Cook", DomainId = 2 },
-            new Expertise {Id = 12, ExpertiseName = "Kitchen cleaner", DomainId = 2 },
-            new Expertise {Id = 13, ExpertiseName = "Gardener", DomainId = 2 },
-            new Expertise {Id = 14, ExpertiseName = "Grocery shopper", DomainId = 2 },
+            new Expertise {PhotoPath="/", Id = 6, ExpertiseName = "Housekeeper", DomainId = 2 },
+            new Expertise {PhotoPath="/", Id = 7, ExpertiseName = "Housesitter", DomainId = 2 },
+            new Expertise {PhotoPath="/", Id = 8, ExpertiseName = "Babysitter", DomainId = 2 },
+            new Expertise {PhotoPath="/", Id = 9, ExpertiseName = "Nanny", DomainId = 2 },
+            new Expertise {PhotoPath="/", Id = 10, ExpertiseName = "Caregiver", DomainId = 2 },
+            new Expertise {PhotoPath="/", Id = 11, ExpertiseName = "Cook", DomainId = 2 },
+            new Expertise {PhotoPath="/", Id = 12, ExpertiseName = "Kitchen cleaner", DomainId = 2 },
+            new Expertise {PhotoPath="/", Id = 13, ExpertiseName = "Gardener", DomainId = 2 },
+            new Expertise {PhotoPath="/", Id = 14, ExpertiseName = "Grocery shopper", DomainId = 2 },
             
             // new Expertise(Id = 15, ExpertiseName = "Chiropractor", DomainId = 3 },
             // new Expertise(Id = 16, ExpertiseName = "Health aide", DomainId = 3 },
@@ -56,7 +56,7 @@ public static class ModelBuilderExtensions
             // new Expertise(Id = 28, ExpertiseName ="Dog walker", 28),
             // new Expertise(Id = 29, ExpertiseName ="Pet groomer", 29),
             // new Expertise(Id = 30, ExpertiseName ="Music teacher", 30),
-            new Expertise { Id = 31, ExpertiseName ="Dance teacher", DomainId = 3 }
+            new Expertise {PhotoPath="/", Id = 31, ExpertiseName ="Dance teacher", DomainId = 3 }
     );
     }
 
@@ -79,7 +79,8 @@ public static class ModelBuilderExtensions
                 Latitude = 26.4207m,
                 Longitude = 50.0888m,
                 IsActive = true,
-                DomainId = 1
+                DomainId = 1,
+                MainExpertiseId = 3
             },
             new Freelancer
             {
@@ -97,7 +98,8 @@ public static class ModelBuilderExtensions
                 Latitude = 23.8859m,
                 Longitude = 45.0792m,
                 IsActive = true,
-                DomainId = 1
+                DomainId = 1,
+                MainExpertiseId = 2
             },
             new Freelancer
             {
@@ -115,7 +117,8 @@ public static class ModelBuilderExtensions
                 Latitude = 24.7743m,
                 Longitude = 46.7384m,
                 IsActive = true,
-                DomainId = 1
+                DomainId = 1,
+                MainExpertiseId = 2
             },
             new Freelancer
             {
@@ -133,7 +136,8 @@ public static class ModelBuilderExtensions
                 Latitude = 21.4858m,
                 Longitude = 39.1925m,
                 IsActive = true,
-                DomainId = 1
+                DomainId = 1,
+                MainExpertiseId = 4
             },
             new Freelancer
             {
@@ -151,7 +155,8 @@ public static class ModelBuilderExtensions
                 Latitude = 26.4207m,
                 Longitude = 50.0888m,
                 IsActive = true,
-                DomainId = 1
+                DomainId = 1,
+                MainExpertiseId = 1
             },
             new Freelancer
             {
@@ -169,7 +174,8 @@ public static class ModelBuilderExtensions
                 Latitude = 23.8859m,
                 Longitude = 45.0792m,
                 IsActive = true,
-                DomainId = 2
+                DomainId = 2,
+                MainExpertiseId = 3
             },
             new Freelancer
             {
@@ -187,7 +193,8 @@ public static class ModelBuilderExtensions
                 Latitude = 24.7743m,
                 Longitude = 46.7384m,
                 IsActive = true,
-                DomainId = 2
+                DomainId = 2,
+                MainExpertiseId = 3
             },
             new Freelancer
             {
@@ -205,7 +212,8 @@ public static class ModelBuilderExtensions
                 Latitude = 24.7136m,
                 Longitude = 46.6753m,
                 IsActive = true,
-                DomainId = 2
+                DomainId = 2,
+                MainExpertiseId = 3
             },
             new Freelancer
             {
@@ -223,7 +231,8 @@ public static class ModelBuilderExtensions
                 Latitude = 21.4858m,
                 Longitude = 39.1925m,
                 IsActive = true,
-                DomainId = 2
+                DomainId = 2,
+                MainExpertiseId = 3
             },
             new Freelancer
             {
@@ -241,7 +250,8 @@ public static class ModelBuilderExtensions
                 Latitude = 26.4207m,
                 Longitude = 50.0888m,
                 IsActive = true,
-                DomainId = 2
+                DomainId = 2,
+                MainExpertiseId = 3
             },
             new Freelancer
             {
@@ -259,7 +269,8 @@ public static class ModelBuilderExtensions
                 Latitude = 23.8859m,
                 Longitude = 45.0792m,
                 IsActive = true,
-                DomainId = 2
+                DomainId = 2,
+                MainExpertiseId = 3
             }
         );
     }
@@ -280,7 +291,9 @@ public static class ModelBuilderExtensions
                             new { FreelancerId = 3, ExpertiseId = 2 },
                             new { FreelancerId = 3, ExpertiseId = 1 },
                             new { FreelancerId = 4, ExpertiseId = 3 },
-                            new { FreelancerId = 4, ExpertiseId = 4 }
+                            new { FreelancerId = 4, ExpertiseId = 4 },
+                            new { FreelancerId = 5, ExpertiseId = 3 },
+                            new { FreelancerId = 5, ExpertiseId = 1 }
                         );
                     });
         });

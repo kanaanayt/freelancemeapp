@@ -49,7 +49,6 @@ public static class ContractMappings
         var response = new FreelancerResponse
         {
             Id = freelancer.Id,
-            
             DomainId = freelancer.DomainId,
             FirstName = freelancer.FirstName,
             LastName = freelancer.LastName,
@@ -58,8 +57,7 @@ public static class ContractMappings
             Email = freelancer.Email,
             PhoneNumber = freelancer.PhoneNumber,
             HourlyRate = freelancer.HourlyRate,
-            Rating = freelancer.Rating,
-            FulfilledContracts = freelancer.FulfilledContracts,
+            Rating = freelancer.Rating,FulfilledContracts = freelancer.FulfilledContracts,
             HoursBilled = freelancer.HoursBilled,
             Latitude = freelancer.Latitude,
             Longitude = freelancer.Longitude,
@@ -67,7 +65,14 @@ public static class ContractMappings
         };
         foreach (var e in freelancer.Expertises)
         {
-            response.ExpertiseNames.Add(e.ExpertiseName);
+            if (e.Id == freelancer.MainExpertiseId) 
+            {
+                response.MainExpertise = e.ExpertiseName;
+            }
+            else
+            {
+                response.OtherExpertises.Add(e.ExpertiseName);
+            }
         }
         return response;
     }

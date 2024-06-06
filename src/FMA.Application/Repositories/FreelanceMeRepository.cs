@@ -57,4 +57,9 @@ public class FreelanceMeRepository : IFreelanceMeRepository
             .Where(e => e.Id >= below && e.Id <= above && e.DomainId == domainId)
             .ToListAsync();
     }
+    public async Task<Expertise> GetExpertiseAsync(int id)
+    {
+        return await _db.Expertises.SingleOrDefaultAsync(e => e.Id == id);
+
+    }
 }

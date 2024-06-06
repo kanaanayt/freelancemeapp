@@ -18,5 +18,7 @@ public class Expertise
 
     public required string ExpertiseName { get; set; }
 
+    public string PhotoPath { get; set; }
+
     public List<Freelancer> Freelancers { get; set; } = new();
 }

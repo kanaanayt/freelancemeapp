@@ -10,4 +10,5 @@ public interface IFreelanceMeRepository
     Task<Freelancer> GetFreelancerByIdAsync(int domainId, int freelancerId);
     Task<IEnumerable<Freelancer>> GetAllFreelancersAsync();
     Task<IEnumerable<Expertise>> GetSomeExpertisesAsync(int domainId, int below, int above);
+    Task<Expertise> GetExpertiseAsync(int id);
 }
