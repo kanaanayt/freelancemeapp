@@ -11,8 +11,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<FreelancerContext>(options => 
 {
-    options.UseNpgsql(builder.Configuration["ConnectionString"]);
-    // options.UseSqlServer(builder.Configuration["ConnectionString"]);
+    // options.UseNpgsql(builder.Configuration["ConnectionString"]);
+    options.UseSqlServer(builder.Configuration["ConnectionString"],
+        options => options.EnableRetryOnFailure());
 });
 builder.Services.AddScoped<IFreelanceMeRepository, FreelanceMeRepository>();
 builder.Services.AddControllers().AddJsonOptions(options =>

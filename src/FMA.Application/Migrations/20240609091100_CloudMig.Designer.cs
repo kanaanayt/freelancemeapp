@@ -3,17 +3,17 @@ using System;
 using FMA.Application.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace FMA.Application.Migrations
 {
     [DbContext(typeof(FreelancerContext))]
-    [Migration("20240526040948_Initial")]
-    partial class Initial
+    [Migration("20240609091100_CloudMig")]
+    partial class CloudMig
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,17 +21,17 @@ namespace FMA.Application.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "8.0.0")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("ExpertiseFreelancer", b =>
                 {
                     b.Property<int>("FreelancerId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<int>("ExpertiseId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("FreelancerId", "ExpertiseId");
 
@@ -54,6 +54,41 @@ namespace FMA.Application.Migrations
                         {
                             FreelancerId = 1,
                             ExpertiseId = 2
+                        },
+                        new
+                        {
+                            FreelancerId = 2,
+                            ExpertiseId = 2
+                        },
+                        new
+                        {
+                            FreelancerId = 3,
+                            ExpertiseId = 2
+                        },
+                        new
+                        {
+                            FreelancerId = 3,
+                            ExpertiseId = 1
+                        },
+                        new
+                        {
+                            FreelancerId = 4,
+                            ExpertiseId = 3
+                        },
+                        new
+                        {
+                            FreelancerId = 4,
+                            ExpertiseId = 4
+                        },
+                        new
+                        {
+                            FreelancerId = 5,
+                            ExpertiseId = 3
+                        },
+                        new
+                        {
+                            FreelancerId = 5,
+                            ExpertiseId = 1
                         });
                 });
 
@@ -61,21 +96,17 @@ namespace FMA.Application.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("DomainName")
                         .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("FontFamily")
-                        .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhotoPath")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -86,50 +117,43 @@ namespace FMA.Application.Migrations
                         {
                             Id = 1,
                             DomainName = "Manual Labor",
-                            FontFamily = "Times New Roman",
-                            PhotoPath = "/images/manuallabor"
+                            PhotoPath = "https://freelanceme.blob.core.windows.net/container1/manual_labor.png"
                         },
                         new
                         {
                             Id = 2,
-                            DomainName = "Home Care",
-                            FontFamily = "Helvetica",
-                            PhotoPath = "/images/homecare"
+                            DomainName = "Domestic Services",
+                            PhotoPath = "https://freelanceme.blob.core.windows.net/container1/domestic_services.png"
                         },
                         new
                         {
                             Id = 3,
-                            DomainName = "Health ",
-                            FontFamily = "Courier New",
-                            PhotoPath = "/images/health"
+                            DomainName = "Health & Welness ",
+                            PhotoPath = "https://freelanceme.blob.core.windows.net/container1/health_and_wellness.png"
                         },
                         new
                         {
                             Id = 4,
-                            DomainName = "White Collar Labor",
-                            FontFamily = "Verdana",
-                            PhotoPath = "/images/whitecollar"
+                            DomainName = "Business Services",
+                            PhotoPath = "https://freelanceme.blob.core.windows.net/container1/business_services.png"
                         },
                         new
                         {
                             Id = 5,
-                            DomainName = "Home Repair",
-                            FontFamily = "Arial",
-                            PhotoPath = "/images/homerepair"
+                            DomainName = "Home Technology",
+                            PhotoPath = "https://freelanceme.blob.core.windows.net/container1/home_technology.png"
                         },
                         new
                         {
                             Id = 6,
                             DomainName = "Pet Care",
-                            FontFamily = "Century Gothic",
-                            PhotoPath = "/images/petcare"
+                            PhotoPath = "https://freelanceme.blob.core.windows.net/container1/pets.png"
                         },
                         new
                         {
                             Id = 7,
-                            DomainName = "Creative",
-                            FontFamily = "Cambria",
-                            PhotoPath = "/images/creative"
+                            DomainName = "Performing Arts",
+                            PhotoPath = "https://freelanceme.blob.core.windows.net/container1/performing_arts.png"
                         });
                 });
 
@@ -137,16 +161,20 @@ namespace FMA.Application.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("DomainId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("ExpertiseName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhotoPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -159,91 +187,106 @@ namespace FMA.Application.Migrations
                         {
                             Id = 1,
                             DomainId = 1,
-                            ExpertiseName = "Furniture assembler"
+                            ExpertiseName = "Furniture assembler",
+                            PhotoPath = "/"
                         },
                         new
                         {
                             Id = 2,
                             DomainId = 1,
-                            ExpertiseName = "Chauffeur"
+                            ExpertiseName = "Chauffeur",
+                            PhotoPath = "/"
                         },
                         new
                         {
                             Id = 3,
                             DomainId = 1,
-                            ExpertiseName = "Painter"
+                            ExpertiseName = "Painter",
+                            PhotoPath = "/"
                         },
                         new
                         {
                             Id = 4,
                             DomainId = 1,
-                            ExpertiseName = "Carpenter"
+                            ExpertiseName = "Carpenter",
+                            PhotoPath = "/"
                         },
                         new
                         {
                             Id = 5,
                             DomainId = 1,
-                            ExpertiseName = "Roof repairer"
+                            ExpertiseName = "Roof repairer",
+                            PhotoPath = "/"
                         },
                         new
                         {
                             Id = 6,
                             DomainId = 2,
-                            ExpertiseName = "Housekeeper"
+                            ExpertiseName = "Housekeeper",
+                            PhotoPath = "/"
                         },
                         new
                         {
                             Id = 7,
                             DomainId = 2,
-                            ExpertiseName = "Housesitter"
+                            ExpertiseName = "Housesitter",
+                            PhotoPath = "/"
                         },
                         new
                         {
                             Id = 8,
                             DomainId = 2,
-                            ExpertiseName = "Babysitter"
+                            ExpertiseName = "Babysitter",
+                            PhotoPath = "/"
                         },
                         new
                         {
                             Id = 9,
                             DomainId = 2,
-                            ExpertiseName = "Nanny"
+                            ExpertiseName = "Nanny",
+                            PhotoPath = "/"
                         },
                         new
                         {
                             Id = 10,
                             DomainId = 2,
-                            ExpertiseName = "Caregiver"
+                            ExpertiseName = "Caregiver",
+                            PhotoPath = "/"
                         },
                         new
                         {
                             Id = 11,
                             DomainId = 2,
-                            ExpertiseName = "Cook"
+                            ExpertiseName = "Cook",
+                            PhotoPath = "/"
                         },
                         new
                         {
                             Id = 12,
                             DomainId = 2,
-                            ExpertiseName = "Kitchen cleaner"
+                            ExpertiseName = "Kitchen cleaner",
+                            PhotoPath = "/"
                         },
                         new
                         {
                             Id = 13,
                             DomainId = 2,
-                            ExpertiseName = "Gardener"
+                            ExpertiseName = "Gardener",
+                            PhotoPath = "/"
                         },
                         new
                         {
                             Id = 14,
                             DomainId = 2,
-                            ExpertiseName = "Grocery shopper"
+                            ExpertiseName = "Grocery shopper",
+                            PhotoPath = "/"
                         },
                         new
                         {
                             Id = 31,
                             DomainId = 3,
-                            ExpertiseName = "Dance teacher"
+                            ExpertiseName = "Dance teacher",
+                            PhotoPath = "/"
                         });
                 });
 
@@ -251,56 +294,59 @@ namespace FMA.Application.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DateRegistered")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("DomainId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("FulfilledContracts")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<decimal>("HourlyRate")
-                        .HasColumnType("numeric");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("HoursBilled")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Latitude")
-                        .HasColumnType("numeric");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("Longitude")
-                        .HasColumnType("numeric");
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("MainExpertiseId")
+                        .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhotoPath")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Rating")
-                        .HasColumnType("numeric");
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -312,7 +358,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 1,
-                            DateRegistered = new DateTime(2024, 3, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 4, 10, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "nadia@example.com",
                             FirstName = "Nadia",
@@ -323,6 +369,7 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Saud",
                             Latitude = 26.4207m,
                             Longitude = 50.0888m,
+                            MainExpertiseId = 3,
                             PhoneNumber = "+966504567890",
                             PhotoPath = "/images/nadia.jpg",
                             Rating = 4.7m
@@ -330,7 +377,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 2,
-                            DateRegistered = new DateTime(2024, 2, 26, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 11, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "khalid@example.com",
                             FirstName = "Khalid",
@@ -341,6 +388,7 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Farsi",
                             Latitude = 23.8859m,
                             Longitude = 45.0792m,
+                            MainExpertiseId = 2,
                             PhoneNumber = "+966509876543",
                             PhotoPath = "/images/khalid.jpg",
                             Rating = 4.6m
@@ -348,7 +396,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 3,
-                            DateRegistered = new DateTime(2024, 4, 11, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 4, 25, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "sara@example.com",
                             FirstName = "Sara",
@@ -359,6 +407,7 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Qahtani",
                             Latitude = 24.7743m,
                             Longitude = 46.7384m,
+                            MainExpertiseId = 2,
                             PhoneNumber = "+966501234567",
                             PhotoPath = "/images/sara.jpg",
                             Rating = 4.9m
@@ -366,7 +415,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 4,
-                            DateRegistered = new DateTime(2024, 3, 12, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 26, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "yousef@example.com",
                             FirstName = "Yousef",
@@ -377,6 +426,7 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Ghamdi",
                             Latitude = 21.4858m,
                             Longitude = 39.1925m,
+                            MainExpertiseId = 4,
                             PhoneNumber = "+966504321098",
                             PhotoPath = "/images/yousef.jpg",
                             Rating = 4.5m
@@ -384,7 +434,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 5,
-                            DateRegistered = new DateTime(2024, 2, 16, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "layla@example.com",
                             FirstName = "Layla",
@@ -395,6 +445,7 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Omari",
                             Latitude = 26.4207m,
                             Longitude = 50.0888m,
+                            MainExpertiseId = 1,
                             PhoneNumber = "+966509876543",
                             PhotoPath = "/images/layla.jpg",
                             Rating = 4.8m
@@ -402,7 +453,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 6,
-                            DateRegistered = new DateTime(2024, 4, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 4, 15, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "omar@example.com",
                             FirstName = "Omar",
@@ -413,6 +464,7 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Zahrani",
                             Latitude = 23.8859m,
                             Longitude = 45.0792m,
+                            MainExpertiseId = 3,
                             PhoneNumber = "+966501234567",
                             PhotoPath = "/images/omar.jpg",
                             Rating = 4.7m
@@ -420,7 +472,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 7,
-                            DateRegistered = new DateTime(2024, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 16, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "huda@example.com",
                             FirstName = "Huda",
@@ -431,6 +483,7 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Muhanna",
                             Latitude = 24.7743m,
                             Longitude = 46.7384m,
+                            MainExpertiseId = 3,
                             PhoneNumber = "+966504567890",
                             PhotoPath = "/images/huda.jpg",
                             Rating = 4.6m
@@ -438,7 +491,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 8,
-                            DateRegistered = new DateTime(2024, 3, 17, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 31, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "fahad@example.com",
                             FirstName = "Fahad",
@@ -449,6 +502,7 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Rashidi",
                             Latitude = 24.7136m,
                             Longitude = 46.6753m,
+                            MainExpertiseId = 3,
                             PhoneNumber = "+966501234567",
                             PhotoPath = "/images/fahad.jpg",
                             Rating = 4.9m
@@ -456,7 +510,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 9,
-                            DateRegistered = new DateTime(2024, 2, 6, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "amal@example.com",
                             FirstName = "Amal",
@@ -467,6 +521,7 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Mutairi",
                             Latitude = 21.4858m,
                             Longitude = 39.1925m,
+                            MainExpertiseId = 3,
                             PhoneNumber = "+966501111222",
                             PhotoPath = "/images/amal.jpg",
                             Rating = 4.8m
@@ -474,7 +529,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 10,
-                            DateRegistered = new DateTime(2024, 2, 21, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 6, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "abdullah@example.com",
                             FirstName = "Abdullah",
@@ -485,6 +540,7 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Qassem",
                             Latitude = 26.4207m,
                             Longitude = 50.0888m,
+                            MainExpertiseId = 3,
                             PhoneNumber = "+966509876543",
                             PhotoPath = "/images/abdullah.jpg",
                             Rating = 4.7m
@@ -492,7 +548,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 11,
-                            DateRegistered = new DateTime(2024, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 21, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "noura@example.com",
                             FirstName = "Noura",
@@ -503,6 +559,7 @@ namespace FMA.Application.Migrations
                             LastName = "Al-Sulaiman",
                             Latitude = 23.8859m,
                             Longitude = 45.0792m,
+                            MainExpertiseId = 3,
                             PhoneNumber = "+966504321098",
                             PhotoPath = "/images/noura.jpg",
                             Rating = 4.9m

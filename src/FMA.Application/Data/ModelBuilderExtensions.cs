@@ -9,13 +9,13 @@ public static class ModelBuilderExtensions
     public static void SeedDomains(this ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Domain>().HasData(
-            new Domain { Id = 1, DomainName = "Manual Labor", PhotoPath = "/images/manual", FontFamily = "Times New Roman" },
-            new Domain { Id = 2, DomainName = "Domestic Services", PhotoPath = "/images/domestic", FontFamily = "Helvetica" },
-            new Domain { Id = 3, DomainName = "Health & Welness ", PhotoPath = "/images/health", FontFamily = "Courier New" },
-            new Domain { Id = 4, DomainName = "Business Services", PhotoPath = "/images/business", FontFamily = "Verdana" },
-            new Domain { Id = 5, DomainName = "Home Technology", PhotoPath = "/images/hometech", FontFamily = "Arial" },
-            new Domain { Id = 6, DomainName = "Pet Care", PhotoPath = "/images/petcare", FontFamily = "Century Gothic" },
-            new Domain { Id = 7, DomainName = "Performing Arts", PhotoPath = "/images/arts", FontFamily = "Cambria" }
+            new Domain { Id = 1, DomainName = "Manual Labor", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/manual_labor" },
+            new Domain { Id = 2, DomainName = "Domestic Services", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/domestic_services" },
+            new Domain { Id = 3, DomainName = "Health & Welness ", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/health_and_wellness" },
+            new Domain { Id = 4, DomainName = "Business Services", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/business_services" },
+            new Domain { Id = 5, DomainName = "Home Technology", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/home_technology" },
+            new Domain { Id = 6, DomainName = "Pet Care", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/pets" },
+            new Domain { Id = 7, DomainName = "Performing Arts", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/performing_arts" }
         );
     }
 

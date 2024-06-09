@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Reflection.Emit;
 using Microsoft.EntityFrameworkCore;
@@ -52,6 +53,7 @@ public class FreelancerContext : DbContext
                             );
                         });
         });
+
 
         modelBuilder.SeedDomains();
         modelBuilder.SeedExpertises();

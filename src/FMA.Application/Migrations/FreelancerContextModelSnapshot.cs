@@ -3,8 +3,8 @@ using System;
 using FMA.Application.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -17,18 +17,18 @@ namespace FMA.Application.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("ExpertiseFreelancer", b =>
                 {
                     b.Property<int>("FreelancerId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<int>("ExpertiseId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("FreelancerId", "ExpertiseId");
 
@@ -93,21 +93,17 @@ namespace FMA.Application.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("DomainName")
                         .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("FontFamily")
-                        .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhotoPath")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -118,50 +114,43 @@ namespace FMA.Application.Migrations
                         {
                             Id = 1,
                             DomainName = "Manual Labor",
-                            FontFamily = "Times New Roman",
-                            PhotoPath = "/images/manual"
+                            PhotoPath = "https://freelanceme.blob.core.windows.net/container1/manual_labor"
                         },
                         new
                         {
                             Id = 2,
                             DomainName = "Domestic Services",
-                            FontFamily = "Helvetica",
-                            PhotoPath = "/images/domestic"
+                            PhotoPath = "https://freelanceme.blob.core.windows.net/container1/domestic_services"
                         },
                         new
                         {
                             Id = 3,
                             DomainName = "Health & Welness ",
-                            FontFamily = "Courier New",
-                            PhotoPath = "/images/health"
+                            PhotoPath = "https://freelanceme.blob.core.windows.net/container1/health_and_wellness"
                         },
                         new
                         {
                             Id = 4,
                             DomainName = "Business Services",
-                            FontFamily = "Verdana",
-                            PhotoPath = "/images/business"
+                            PhotoPath = "https://freelanceme.blob.core.windows.net/container1/business_services"
                         },
                         new
                         {
                             Id = 5,
                             DomainName = "Home Technology",
-                            FontFamily = "Arial",
-                            PhotoPath = "/images/hometech"
+                            PhotoPath = "https://freelanceme.blob.core.windows.net/container1/home_technology"
                         },
                         new
                         {
                             Id = 6,
                             DomainName = "Pet Care",
-                            FontFamily = "Century Gothic",
-                            PhotoPath = "/images/petcare"
+                            PhotoPath = "https://freelanceme.blob.core.windows.net/container1/pets"
                         },
                         new
                         {
                             Id = 7,
                             DomainName = "Performing Arts",
-                            FontFamily = "Cambria",
-                            PhotoPath = "/images/arts"
+                            PhotoPath = "https://freelanceme.blob.core.windows.net/container1/performing_arts"
                         });
                 });
 
@@ -169,20 +158,20 @@ namespace FMA.Application.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("DomainId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("ExpertiseName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhotoPath")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -302,59 +291,59 @@ namespace FMA.Application.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DateRegistered")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("DomainId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("FulfilledContracts")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<decimal>("HourlyRate")
-                        .HasColumnType("numeric");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("HoursBilled")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("boolean");
+                        .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Latitude")
-                        .HasColumnType("numeric");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("Longitude")
-                        .HasColumnType("numeric");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("MainExpertiseId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhotoPath")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Rating")
-                        .HasColumnType("numeric");
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -366,7 +355,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 1,
-                            DateRegistered = new DateTime(2024, 4, 6, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 4, 10, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "nadia@example.com",
                             FirstName = "Nadia",
@@ -385,7 +374,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 2,
-                            DateRegistered = new DateTime(2024, 3, 7, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 11, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "khalid@example.com",
                             FirstName = "Khalid",
@@ -404,7 +393,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 3,
-                            DateRegistered = new DateTime(2024, 4, 21, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 4, 25, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "sara@example.com",
                             FirstName = "Sara",
@@ -423,7 +412,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 4,
-                            DateRegistered = new DateTime(2024, 3, 22, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 26, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "yousef@example.com",
                             FirstName = "Yousef",
@@ -442,7 +431,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 5,
-                            DateRegistered = new DateTime(2024, 2, 26, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 1,
                             Email = "layla@example.com",
                             FirstName = "Layla",
@@ -461,7 +450,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 6,
-                            DateRegistered = new DateTime(2024, 4, 11, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 4, 15, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "omar@example.com",
                             FirstName = "Omar",
@@ -480,7 +469,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 7,
-                            DateRegistered = new DateTime(2024, 3, 12, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 16, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "huda@example.com",
                             FirstName = "Huda",
@@ -499,7 +488,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 8,
-                            DateRegistered = new DateTime(2024, 3, 27, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 31, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "fahad@example.com",
                             FirstName = "Fahad",
@@ -518,7 +507,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 9,
-                            DateRegistered = new DateTime(2024, 2, 16, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "amal@example.com",
                             FirstName = "Amal",
@@ -537,7 +526,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 10,
-                            DateRegistered = new DateTime(2024, 3, 2, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 6, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "abdullah@example.com",
                             FirstName = "Abdullah",
@@ -556,7 +545,7 @@ namespace FMA.Application.Migrations
                         new
                         {
                             Id = 11,
-                            DateRegistered = new DateTime(2024, 3, 17, 0, 0, 0, 0, DateTimeKind.Utc),
+                            DateRegistered = new DateTime(2024, 3, 21, 0, 0, 0, 0, DateTimeKind.Utc),
                             DomainId = 2,
                             Email = "noura@example.com",
                             FirstName = "Noura",

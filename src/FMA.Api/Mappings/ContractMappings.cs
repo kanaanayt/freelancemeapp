@@ -23,7 +23,6 @@ public static class ContractMappings
             Id = domain.Id,
             DomainName = domain.DomainName,
             PhotoPath = domain.PhotoPath,
-            FontFamily = domain.FontFamily
         };
         foreach (var freelancer in domain.Freelancers)
         {

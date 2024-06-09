@@ -7,7 +7,6 @@ public class DomainResponse
     public required string DomainName { get; set; }
 
     public required string PhotoPath { get; set; }
-    public required string FontFamily { get; set; }
 
     public FreelancersResponse Freelancers { get; set; } = new();
     public int FreelancerCount => Freelancers.Items.Count();
