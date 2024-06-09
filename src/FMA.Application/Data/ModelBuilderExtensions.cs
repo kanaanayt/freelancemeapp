@@ -9,13 +9,13 @@ public static class ModelBuilderExtensions
     public static void SeedDomains(this ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Domain>().HasData(
-            new Domain { Id = 1, DomainName = "Manual Labor", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/manual_labor" },
-            new Domain { Id = 2, DomainName = "Domestic Services", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/domestic_services" },
-            new Domain { Id = 3, DomainName = "Health & Welness ", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/health_and_wellness" },
-            new Domain { Id = 4, DomainName = "Business Services", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/business_services" },
-            new Domain { Id = 5, DomainName = "Home Technology", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/home_technology" },
-            new Domain { Id = 6, DomainName = "Pet Care", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/pets" },
-            new Domain { Id = 7, DomainName = "Performing Arts", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/performing_arts" }
+            new Domain { Id = 1, DomainName = "Manual Labor", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/manual_labor", BorderColor = "#fdf1d3" },
+            new Domain { Id = 2, DomainName = "Domestic Services", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/domestic_services", BorderColor = "#f3fee7" },
+            new Domain { Id = 3, DomainName = "Health & Welness ", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/health_and_wellness", BorderColor = "#fee7e7" },
+            new Domain { Id = 4, DomainName = "Business Services", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/business_services", BorderColor ="#e7edfe" },
+            new Domain { Id = 5, DomainName = "Home Technology", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/home_technology", BorderColor = "#ffeab5" },
+            new Domain { Id = 6, DomainName = "Pet Care", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/pets", BorderColor="#dcffb5" },
+            new Domain { Id = 7, DomainName = "Performing Arts", PhotoPath = "https://freelanceme.blob.core.windows.net/container1/performing_arts", BorderColor = "#fdf1d3" }
         );
     }
 
