@@ -50,11 +50,10 @@ public class FreelanceMeRepository : IFreelanceMeRepository
         return await _db.Freelancers.Include(f => f.Expertises).ToListAsync();
     }
 
-    public async Task<IEnumerable<Expertise>> GetSomeExpertisesAsync(int domainId, int below, int above)
+    public async Task<IEnumerable<Expertise>> GetExpertisesAsync()
     {
         return await _db.Expertises
             .Include(e => e.Freelancers)
-            .Where(e => e.Id >= below && e.Id <= above && e.DomainId == domainId)
             .ToListAsync();
     }
     public async Task<Expertise> GetExpertiseAsync(int id)
@@ -62,4 +61,6 @@ public class FreelanceMeRepository : IFreelanceMeRepository
         return await _db.Expertises.SingleOrDefaultAsync(e => e.Id == id);
 
     }
+
+
 }

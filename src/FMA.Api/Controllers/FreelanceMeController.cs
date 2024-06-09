@@ -62,16 +62,6 @@ public class FreelanceMeController : ControllerBase
         return freelancers.MapFreelancers();
     }
 
-    // Expertise mini filtering under single domain
-    [Route("domain/{domainId}/expertises/{below}/{above}")]
-    [HttpGet]
-    public async Task<ActionResult<ExpertisesResponse>> GetSomeExpertises(
-        int domainId, int below, int above)
-    {
-        var expertises = await _repository.GetSomeExpertisesAsync(domainId, below, above);
-        return expertises.MapExpertises();
-    }
-
     [Route("images/expertise/{id}")]
     [HttpGet]
     public async Task<IActionResult> GetExpertisePhoto(int id)
@@ -88,5 +78,13 @@ public class FreelanceMeController : ControllerBase
         var domain = await _repository.GetDomainAsync(id);
         Byte[] bytes = System.IO.File.ReadAllBytes(domain.PhotoPath);
         return File(bytes, "image/jpeg");
+    }
+
+    [HttpGet]
+    [Route("expertises")]
+    public async Task<ActionResult<ExpertisesResponse>> GetExpertises()
+    {
+        var expertises = await _repository.GetExpertisesAsync();
+        return expertises.MapExpertises();
     }
 }
