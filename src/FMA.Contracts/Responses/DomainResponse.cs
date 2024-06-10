@@ -8,6 +8,8 @@ public class DomainResponse
 
     public required string PhotoPath { get; set; }
 
+    public required string BorderColor { get; set; }
+
     public FreelancersResponse Freelancers { get; set; } = new();
     public int FreelancerCount => Freelancers.Items.Count();
 
