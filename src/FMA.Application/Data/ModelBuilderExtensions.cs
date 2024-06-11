@@ -83,7 +83,7 @@ public static class ModelBuilderExtensions
                 Longitude = 50.0888m,
                 IsActive = true,
                 DomainId = 1,
-                MainExpertiseId = 3
+                MainExpertiseId = 1
             },
             new Freelancer
             {
@@ -121,7 +121,7 @@ public static class ModelBuilderExtensions
                 Longitude = 46.7384m,
                 IsActive = true,
                 DomainId = 1,
-                MainExpertiseId = 2
+                MainExpertiseId = 3
             },
             new Freelancer
             {
@@ -159,7 +159,7 @@ public static class ModelBuilderExtensions
                 Longitude = 50.0888m,
                 IsActive = true,
                 DomainId = 1,
-                MainExpertiseId = 1
+                MainExpertiseId = 5
             },
             new Freelancer
             {
@@ -177,8 +177,8 @@ public static class ModelBuilderExtensions
                 Latitude = 23.8859m,
                 Longitude = 45.0792m,
                 IsActive = true,
-                DomainId = 2,
-                MainExpertiseId = 3
+                DomainId = 1,
+                MainExpertiseId = 6
             },
             new Freelancer
             {
@@ -196,8 +196,8 @@ public static class ModelBuilderExtensions
                 Latitude = 24.7743m,
                 Longitude = 46.7384m,
                 IsActive = true,
-                DomainId = 2,
-                MainExpertiseId = 3
+                DomainId = 1,
+                MainExpertiseId = 7
             },
             new Freelancer
             {
@@ -215,8 +215,8 @@ public static class ModelBuilderExtensions
                 Latitude = 24.7136m,
                 Longitude = 46.6753m,
                 IsActive = true,
-                DomainId = 2,
-                MainExpertiseId = 3
+                DomainId = 1,
+                MainExpertiseId = 8
             },
             new Freelancer
             {
@@ -234,8 +234,8 @@ public static class ModelBuilderExtensions
                 Latitude = 21.4858m,
                 Longitude = 39.1925m,
                 IsActive = true,
-                DomainId = 2,
-                MainExpertiseId = 3
+                DomainId = 1,
+                MainExpertiseId = 8
             },
             new Freelancer
             {
@@ -253,8 +253,8 @@ public static class ModelBuilderExtensions
                 Latitude = 26.4207m,
                 Longitude = 50.0888m,
                 IsActive = true,
-                DomainId = 2,
-                MainExpertiseId = 3
+                DomainId = 1,
+                MainExpertiseId = 8
             },
             new Freelancer
             {
@@ -272,8 +272,8 @@ public static class ModelBuilderExtensions
                 Latitude = 23.8859m,
                 Longitude = 45.0792m,
                 IsActive = true,
-                DomainId = 2,
-                MainExpertiseId = 3
+                DomainId = 1,
+                MainExpertiseId = 8
             }
         );
     }
@@ -289,14 +289,16 @@ public static class ModelBuilderExtensions
                     {
                         j.HasData(
                             new { FreelancerId = 1, ExpertiseId = 1 },
-                            new { FreelancerId = 1, ExpertiseId = 2 },
+                            new { FreelancerId = 1, ExpertiseId = 4 },
                             new { FreelancerId = 2, ExpertiseId = 2 },
-                            new { FreelancerId = 3, ExpertiseId = 2 },
-                            new { FreelancerId = 3, ExpertiseId = 1 },
-                            new { FreelancerId = 4, ExpertiseId = 3 },
+                            new { FreelancerId = 3, ExpertiseId = 3 },
                             new { FreelancerId = 4, ExpertiseId = 4 },
-                            new { FreelancerId = 5, ExpertiseId = 3 },
-                            new { FreelancerId = 5, ExpertiseId = 1 }
+                            new { FreelancerId = 4, ExpertiseId = 1 },
+                            new { FreelancerId = 5, ExpertiseId = 5 },
+                            new { FreelancerId = 6, ExpertiseId = 6 },
+                            new { FreelancerId = 7, ExpertiseId = 7 },
+                            new { FreelancerId = 7, ExpertiseId = 3 },
+                            new { FreelancerId = 8, ExpertiseId = 8 }
                         );
                     });
         });
