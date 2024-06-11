@@ -61,13 +61,20 @@ public static class ContractMappings
             HoursBilled = freelancer.HoursBilled,
             Latitude = freelancer.Latitude,
             Longitude = freelancer.Longitude,
-            IsActive = freelancer.IsActive,
+            IsActive = freelancer.IsActive
         };
         foreach (var e in freelancer.Expertises)
         {
             if (e.Id == freelancer.MainExpertiseId) 
             {
-                response.MainExpertise = e.ExpertiseName;
+                response.Expertise = new ExpertiseResponse
+                {
+                    Id = e.Id,
+                    ExpertiseName = e.ExpertiseName,
+                    PhotoPath = e.PhotoPath,
+                    BorderColor = e.BorderColor,
+                    Freelancers = null!
+                };
             }
             else
             {

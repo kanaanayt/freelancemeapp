@@ -87,4 +87,10 @@ public class FreelanceMeController : ControllerBase
         var expertises = await _repository.GetExpertisesAsync();
         return expertises.MapExpertises();
     }
+
+    // [HttpGet]
+    // public async Task<Expertise> GetExpertiseBySlug(string slug)
+    // {
+    //     var expertises = 
+    // }
 }

@@ -6,7 +6,7 @@ public class FreelancerResponse
 
     public required int DomainId { get; set; }
 
-    public string MainExpertise { get; set; }
+    public ExpertiseResponse Expertise { get; set; }
     public List<string> OtherExpertises { get; set; } = new();
 
     public int NumberOfSkills => OtherExpertises.Count();

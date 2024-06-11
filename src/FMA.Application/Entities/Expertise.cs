@@ -18,7 +18,7 @@ public class Expertise
 
     public required string ExpertiseName { get; set; }
 
-    public  string BorderColor { get; set; }
+    public string BorderColor { get; set; }
 
     public string PhotoPath { get; set; }
 
