@@ -22,21 +22,24 @@ public static class ModelBuilderExtensions
     public static void SeedExpertises(this ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Expertise>().HasData(
-            new Expertise {PhotoPath="/", Id = 1, ExpertiseName = "Furniture assembler", DomainId = 1 },
-            new Expertise {PhotoPath="/", Id = 2, ExpertiseName = "Chauffeur", DomainId = 1 },
-            new Expertise {PhotoPath="/", Id = 3, ExpertiseName = "Painter", DomainId = 1 },
-            new Expertise {PhotoPath="/", Id = 4, ExpertiseName = "Carpenter", DomainId = 1 },
-            new Expertise {PhotoPath="/", Id = 5, ExpertiseName = "Roof repairer", DomainId = 1 },
+            new Expertise { Id = 1, ExpertiseName = "Furniture assembler", DomainId = 1,  PhotoPath = "https://freelanceme.blob.core.windows.net/container1/furniture_assembler", BorderColor = "#fdf1d3" },
+            new Expertise { Id = 2, ExpertiseName = "Chauffeur", DomainId = 1, PhotoPath = "https://freelanceme.blob.core.windows.net/container1/chauffeur", BorderColor = "#f3fee7" },
+            new Expertise { Id = 3, ExpertiseName = "Painter", DomainId = 1, PhotoPath = "https://freelanceme.blob.core.windows.net/container1/painter", BorderColor = "#fee7e7" },
+            new Expertise { Id = 4, ExpertiseName = "Carpenter", DomainId = 1, PhotoPath = "https://freelanceme.blob.core.windows.net/container1/carpenter", BorderColor ="#e7edfe" },
+            new Expertise { Id = 5, ExpertiseName = "Roof repairer", DomainId = 1,PhotoPath = "https://freelanceme.blob.core.windows.net/container1/roof_repairer", BorderColor = "#ffeab5" },
+            new Expertise { Id = 6, ExpertiseName = "Packer", DomainId = 1, PhotoPath = "https://freelanceme.blob.core.windows.net/container1/packing_service", BorderColor = "#dcffb5" },
+            new Expertise { Id = 7, ExpertiseName = "Window cleaner", DomainId = 1, PhotoPath = "https://freelanceme.blob.core.windows.net/container1/window_cleaner", BorderColor = "#fdf1d3" },
+            new Expertise { Id = 8, ExpertiseName = "Yard worker", DomainId = 1, PhotoPath = "https://freelanceme.blob.core.windows.net/container1/yard_worker", BorderColor = "#f3fee7" }
 
-            new Expertise {PhotoPath="/", Id = 6, ExpertiseName = "Housekeeper", DomainId = 2 },
-            new Expertise {PhotoPath="/", Id = 7, ExpertiseName = "Housesitter", DomainId = 2 },
-            new Expertise {PhotoPath="/", Id = 8, ExpertiseName = "Babysitter", DomainId = 2 },
-            new Expertise {PhotoPath="/", Id = 9, ExpertiseName = "Nanny", DomainId = 2 },
-            new Expertise {PhotoPath="/", Id = 10, ExpertiseName = "Caregiver", DomainId = 2 },
-            new Expertise {PhotoPath="/", Id = 11, ExpertiseName = "Cook", DomainId = 2 },
-            new Expertise {PhotoPath="/", Id = 12, ExpertiseName = "Kitchen cleaner", DomainId = 2 },
-            new Expertise {PhotoPath="/", Id = 13, ExpertiseName = "Gardener", DomainId = 2 },
-            new Expertise {PhotoPath="/", Id = 14, ExpertiseName = "Grocery shopper", DomainId = 2 },
+            // new Expertise {PhotoPath="/", Id = 6, ExpertiseName = "Housekeeper", DomainId = 2 },
+            // new Expertise {PhotoPath="/", Id = 7, ExpertiseName = "Housesitter", DomainId = 2 },
+            // new Expertise {PhotoPath="/", Id = 8, ExpertiseName = "Babysitter", DomainId = 2 },
+            // new Expertise {PhotoPath="/", Id = 9, ExpertiseName = "Nanny", DomainId = 2 },
+            // new Expertise {PhotoPath="/", Id = 10, ExpertiseName = "Caregiver", DomainId = 2 },
+            // new Expertise {PhotoPath="/", Id = 11, ExpertiseName = "Cook", DomainId = 2 },
+            // new Expertise {PhotoPath="/", Id = 12, ExpertiseName = "Kitchen cleaner", DomainId = 2 },
+            // new Expertise {PhotoPath="/", Id = 13, ExpertiseName = "Gardener", DomainId = 2 },
+            // new Expertise {PhotoPath="/", Id = 14, ExpertiseName = "Grocery shopper", DomainId = 2 },
             
             // new Expertise(Id = 15, ExpertiseName = "Chiropractor", DomainId = 3 },
             // new Expertise(Id = 16, ExpertiseName = "Health aide", DomainId = 3 },
@@ -56,7 +59,7 @@ public static class ModelBuilderExtensions
             // new Expertise(Id = 28, ExpertiseName ="Dog walker", 28),
             // new Expertise(Id = 29, ExpertiseName ="Pet groomer", 29),
             // new Expertise(Id = 30, ExpertiseName ="Music teacher", 30),
-            new Expertise {PhotoPath="/", Id = 31, ExpertiseName ="Dance teacher", DomainId = 3 }
+            //new Expertise {PhotoPath="/", Id = 31, ExpertiseName ="Dance teacher", DomainId = 3 }
     );
     }
 
