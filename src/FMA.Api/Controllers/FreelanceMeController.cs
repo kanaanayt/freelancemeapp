@@ -91,9 +91,10 @@ public class FreelanceMeController : ControllerBase
 
     [HttpPost]
     [Route("filter")]
-    public Task<ActionResult<FreelancersResponse>> Filter(FreelancerRequest request)
+    public async Task<ActionResult<FreelancersResponse>> Filter(FreelancerRequest request)
     {
-        _repository.FilterFreelancers(request);
+        var freelancers = await _repository.FilterFreelancers(request);
+        return freelancers.ToList().MapFreelancers();
     }
 
     // [HttpGet]

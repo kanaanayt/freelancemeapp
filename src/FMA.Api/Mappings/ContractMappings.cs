@@ -51,7 +51,7 @@ public static class ContractMappings
             Id = freelancer.Id,
             DomainId = freelancer.DomainId,
             FirstName = freelancer.FirstName,
-            LasftName = freelancer.LastName ||
+            LastName = freelancer.LastName,
             DateRegistered = freelancer.DateRegistered,
             PhotoPath = freelancer.PhotoPath,
             Email = freelancer.Email,
