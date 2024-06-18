@@ -70,7 +70,7 @@ public class FreelanceMeRepository : IFreelanceMeRepository
             freelancer => request.Name.Contains(freelancer.FirstName) || request.Name.Contains(freelancer.LastName));
 
         freelancers = freelancers.Where(
-            freelancer => freelancer.Expertises.Select(e => e.ExpertiseName).Equals(request.ExpertiseName)
+            freelancer => freelancer.Expertises.Any(ex => ex.ExpertiseName.Contains(request.ExpertiseName))
         );
 
         return await freelancers.ToListAsync();
