@@ -1,4 +1,6 @@
 using FMA.Application.Entities;
+using FMA.Contracts.Requests;
+using FMA.Contracts.Responses;
 
 namespace FMA.Application.Repositories;
 
@@ -11,4 +13,5 @@ public interface IFreelanceMeRepository
     Task<IEnumerable<Freelancer>> GetAllFreelancersAsync();
     Task<IEnumerable<Expertise>> GetExpertisesAsync();
     Task<Expertise> GetExpertiseAsync(int id);
+    Task<IEnumerable<Freelancer>> FilterFreelancers(FreelancerRequest request);
 }

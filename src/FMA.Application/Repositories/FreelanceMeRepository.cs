@@ -3,6 +3,7 @@ using System.Security.Principal;
 using FMA.Application.Data;
 using FMA.Application.Entities;
 using Microsoft.EntityFrameworkCore;
+using FMA.Contracts.Requests;
 
 namespace FMA.Application.Repositories;
 
@@ -61,8 +62,17 @@ public class FreelanceMeRepository : IFreelanceMeRepository
         return await _db.Expertises.SingleOrDefaultAsync(e => e.Id == id);
 
     }
-    
-    
 
+    public async Task<IEnumerable<Freelancer>> FilterFreelancers(FreelancerRequest request)
+    {
+        IQueryable<Freelancer> freelancers = _db.Freelancers.AsQueryable();
+        freelancers = freelancers.Where(
+            freelancer => request.Name.Contains(freelancer.FirstName) || request.Name.Contains(freelancer.LastName));
 
+        freelancers = freelancers.Where(
+            freelancer => freelancer.Expertises.Select(e => e.ExpertiseName).Equals(request.ExpertiseName)
+        );
+
+        return await freelancers.ToListAsync();
+    }
 }

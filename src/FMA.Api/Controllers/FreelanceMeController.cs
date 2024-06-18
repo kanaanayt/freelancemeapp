@@ -4,6 +4,7 @@ using FMA.Application.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using FMA.Contracts.Responses;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using FMA.Contracts.Requests;
 
 namespace FMA.Api.Controllers;
 [ApiController]
@@ -86,6 +87,13 @@ public class FreelanceMeController : ControllerBase
     {
         var expertises = await _repository.GetExpertisesAsync();
         return expertises.MapExpertises();
+    }
+
+    [HttpPost]
+    [Route("filter")]
+    public Task<ActionResult<FreelancersResponse>> Filter(FreelancerRequest request)
+    {
+        _repository.FilterFreelancers(request);
     }
 
     // [HttpGet]

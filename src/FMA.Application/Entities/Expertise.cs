@@ -20,7 +20,7 @@ public class Expertise
 
     public string BorderColor { get; set; }
 
-    public string PhotoPath { get; set; }
+    public string PhotoPath {get; set; 
 
     public List<Freelancer> Freelancers { get; set; } = new();
 }
