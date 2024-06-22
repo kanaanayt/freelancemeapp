@@ -27,13 +27,13 @@ public class Freelancer
 
     public required string PhoneNumber { get; set; }
 
-    public required decimal HourlyRate { get; set; }
-    public required decimal Rating { get; set; }
+    public required double HourlyRate { get; set; }
+    public required double Rating { get; set; }
     public required int FulfilledContracts { get; set; }
     public required int HoursBilled { get; set; }
 
-    public required decimal Latitude { get; set; }
-    public required decimal Longitude { get; set; }
+    public required double Latitude { get; set; }
+    public required double Longitude { get; set; }
 
     public required bool IsActive { get; set; }
 }

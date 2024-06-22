@@ -4,6 +4,7 @@ using FMA.Application.Data;
 using FMA.Application.Entities;
 using Microsoft.EntityFrameworkCore;
 using FMA.Contracts.Requests;
+using Geolocation;
 
 namespace FMA.Application.Repositories;
 
@@ -66,13 +67,33 @@ public class FreelanceMeRepository : IFreelanceMeRepository
     public async Task<IEnumerable<Freelancer>> FilterFreelancers(FreelancerRequest request)
     {
         IQueryable<Freelancer> freelancers = _db.Freelancers.AsQueryable();
-        freelancers = freelancers.Where(
-            freelancer => request.Name.Contains(freelancer.FirstName) || request.Name.Contains(freelancer.LastName));
-
-        freelancers = freelancers.Where(
-            freelancer => freelancer.Expertises.Any(ex => ex.ExpertiseName.Contains(request.ExpertiseName))
+        freelancers = freelancers.Where(freelancer =>
+            request.Name.ToLower().Contains(freelancer.FirstName.ToLower()) 
+            || 
+            request.Name.ToLower().Contains(freelancer.LastName.ToLower()) 
+            ||
+            freelancer.Expertises.Any(expertise => expertise.ExpertiseName.Contains(request.ExpertiseName))
         );
 
-        return await freelancers.ToListAsync();
+        // freelancers = freelancers.Where(freelancer => 
+        //     GetDistance(request.Latitude, request.Longitude, freelancer.Latitude, freelancer.Longitude).CompareTo(request.MaxDistance) < 0);
+
+        var result =  await freelancers.ToListAsync();
+
+        var freelancersFilteredByDistance = new List<Freelancer>();
+
+        foreach (var freelancer in result)
+        {
+            if (GetDistance(request.Latitude, request.Longitude, freelancer.Latitude, freelancer.Longitude) < request.MaxDistance)
+            {
+                freelancersFilteredByDistance.Add(freelancer);
+            }
+        }
+        return freelancersFilteredByDistance;
+    }
+
+    public double GetDistance(double requestLatitude, double requestLongitude, double freelancerLatitude, double freelancerLongitude)
+    {
+        return GeoCalculator.GetDistance(requestLatitude, requestLongitude, freelancerLatitude, freelancerLongitude, 1, DistanceUnit.Kilometers);
     }
 }
