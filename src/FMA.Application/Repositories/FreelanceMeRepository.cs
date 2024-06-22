@@ -67,13 +67,22 @@ public class FreelanceMeRepository : IFreelanceMeRepository
     public async Task<IEnumerable<Freelancer>> FilterFreelancers(FreelancerRequest request)
     {
         IQueryable<Freelancer> freelancers = _db.Freelancers.AsQueryable();
+
         freelancers = freelancers.Where(freelancer =>
             request.Name.ToLower().Contains(freelancer.FirstName.ToLower()) 
             || 
             request.Name.ToLower().Contains(freelancer.LastName.ToLower()) 
             ||
+			request.Email.ToLower().Contains(freelancer.Email.ToLower())
+			||
             freelancer.Expertises.Any(expertise => expertise.ExpertiseName.Contains(request.ExpertiseName))
         );
+
+		freelancers = freelancers.Where(freelancer =>
+			freelancer.Rating >= request.MinRating 
+			&& 
+			freelancer.HourlyRate <= request.MaxHourlyRate
+		);
 
         // freelancers = freelancers.Where(freelancer => 
         //     GetDistance(request.Latitude, request.Longitude, freelancer.Latitude, freelancer.Longitude).CompareTo(request.MaxDistance) < 0);
@@ -84,7 +93,7 @@ public class FreelanceMeRepository : IFreelanceMeRepository
 
         foreach (var freelancer in result)
         {
-            if (GetDistance(request.Latitude, request.Longitude, freelancer.Latitude, freelancer.Longitude) < request.MaxDistance)
+            if (GetDistance(request.Latitude, request.Longitude, freelancer.Latitude, freelancer.Longitude) <= request.MaxDistance)
             {
                 freelancersFilteredByDistance.Add(freelancer);
             }
@@ -97,3 +106,4 @@ public class FreelanceMeRepository : IFreelanceMeRepository
         return GeoCalculator.GetDistance(requestLatitude, requestLongitude, freelancerLatitude, freelancerLongitude, 1, DistanceUnit.Kilometers);
     }
 }
+
